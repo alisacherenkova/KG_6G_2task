@@ -19,17 +19,18 @@ public class BresenhamLineDrawer implements LineDrawer {
         dy = y2 - y1;
         incx = Integer.compare(dx, 0);
         incy = Integer.compare(dy, 0);
+
         if (dx < 0) dx = -dx;
         if (dy < 0) dy = -dy;
 
-        if (dx > dy){
-            pdx = Integer.compare(dx, 0); pdy = 0;
+        if (dx > dy) {
+            pdx = incx; pdy = 0;
             es = dy; el = dx;
-        }
-        else{
+        } else {
             pdx = 0; pdy = incy;
             es = dx; el = dy;
         }
+
         x = x1;
         y = y1;
         err = el/2;
@@ -37,12 +38,12 @@ public class BresenhamLineDrawer implements LineDrawer {
 
         for (int t = 0; t < el; t++) {
             err -= es;
-            if (err < 0) {
+            if (err < 0)
+            {
                 err += el;
                 x += incx;
                 y += incy;
-            }
-            else {
+            } else {
                 x += pdx;
                 y += pdy;
             }

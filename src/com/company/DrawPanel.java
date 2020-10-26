@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.drawers.BresenhamLineDrawer;
+import com.company.drawers.DDALineDrawer;
 import com.company.drawers.WuLineDrawer;
 import com.company.utils.DrawUtils;
 
@@ -22,7 +23,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         BufferedImage bi = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics gr = bi.createGraphics();
         PixelDrawer pd = new GraphicsPixelDrawer(gr);
-        LineDrawer ld = new WuLineDrawer(pd);
+        LineDrawer ld = new DDALineDrawer(pd);
         gr.setColor(Color.WHITE);
         gr.fillRect(0,0, getWidth(), getHeight());
         gr.setColor(Color.BLACK);
@@ -33,7 +34,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener {
         gr.dispose();
     }
     private void actualDraw(LineDrawer ld){
-        DrawUtils.drawSnowflake(ld, getWidth()/2, getHeight()/2, 80, 60);
+        DrawUtils.drawSnowflake(ld, getWidth()/2 - 200, getHeight()/2, 80, 60);
         ld.drawLine(getWidth()/2, getHeight()/2, position.x, position.y);
 
     }
